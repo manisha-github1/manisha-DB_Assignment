@@ -89,9 +89,12 @@ distance of 1000 KM s
 */
 
 -- Ans - Zero rows returned since distance 1000 and above is travelled by passenger in only Sleeper bus_type in passenger table.
+
 select ps.Passenger_Name , ps.Boarding_City, ps.Destination_City, ps.Bus_Type , pr.Price , ps.Distance
-from Passenger  as ps inner join Price as pr on (ps.Bus_Type = pr.Bus_Type and ps.Distance = pr.Distance)
+from Passenger  as ps left outer join Price as pr on (ps.Bus_Type = pr.Bus_Type and ps.Distance = pr.Distance)
 where ps.Distance >= 1000 and ps.Bus_Type = 'Sitting';
+
+
 
 -- 8) What will be the Sitting and Sleeper bus charge for Pallavi to travel from Bangalore to Panaji?
 -- Ans Pallavi is travlleing for 600 KM.  In passenger table its panji to banglore but price is only categorized by bus_type and distance.
